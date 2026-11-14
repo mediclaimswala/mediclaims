@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mediclaimswala – Help with rejected health insurance claims</title>
+<meta name="description" content="Health insurance claim rejected? Mediclaimswala gives expert, end-to-end help with rejected, short-paid and delayed mediclaims across India.">
+<meta property="og:title" content="Mediclaimswala – Claim rejected? We’ve got your back.">
+<meta property="og:description" content="Expert, end-to-end help with rejected, short-paid and delayed health insurance claims.">
+<meta property="og:url" content="https://mediclaimswala.in">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --soft:#F4F9FB; --surface:#E8F4F8; --mint:#E6F6EF; --ink:#1F2933; --heading:#0B3C5D; --muted:#55626F;
+  --green:#1FA67A; --green-ink:#13805C; --amber:#F5A623; --amber-hover:#E8961A; --line:#DDE3EA;
+  --hero-a:#0B3C5D; --hero-b:#0F5583; --on-dark:#FFFFFF; --on-dark-muted:#C9DCE7; --leaf:#3DD39B;
+  --card-shadow:0 1px 2px rgba(11,60,93,.06), 0 12px 32px -12px rgba(11,60,93,.22);
+  --error:#C23B3B; --dot:rgba(255,255,255,.09);
+  --display:'Poppins','Noto Sans Devanagari','Segoe UI',Arial,sans-serif;
+  --body:'Inter','Noto Sans Devanagari','Segoe UI',Roboto,Arial,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#08202F; --soft:#0A2638; --surface:#0E3049; --mint:#0C3530; --ink:#E4ECF1; --heading:#FFFFFF; --muted:#A7B8C5;
+    --green:#3DD39B; --green-ink:#3DD39B; --line:#22465F; --hero-a:#051521; --hero-b:#0B3C5D;
+    --card-shadow:0 12px 32px -12px rgba(0,0,0,.6); --error:#FF8A8A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#08202F; --soft:#0A2638; --surface:#0E3049; --mint:#0C3530; --ink:#E4ECF1; --heading:#FFFFFF; --muted:#A7B8C5;
+  --green:#3DD39B; --green-ink:#3DD39B; --line:#22465F; --hero-a:#051521; --hero-b:#0B3C5D;
+  --card-shadow:0 12px 32px -12px rgba(0,0,0,.6); --error:#FF8A8A; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.6; overflow-x:hidden}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:60; background:var(--bg)}
+img,svg{max-width:100%}
+a{color:var(--heading)}
+:focus-visible{outline:3px solid var(--amber); outline-offset:3px; border-radius:6px}
+.wrap{width:min(1180px, 100% - 40px); margin-inline:auto}
+h1,h2,h3{font-family:var(--display); color:var(--heading); margin:0; line-height:1.15}
+h2{font-size:clamp(30px, 4.2vw, 44px); font-weight:700; letter-spacing:-.8px}
+h3{font-size:20px; font-weight:600}
+p{margin:0}
+.lede{color:var(--muted); font-size:18px; max-width:60ch}
+section{padding:96px 0}
+.sec-head{display:grid; gap:14px; margin-bottom:44px}
+.sec-head.center{text-align:center; justify-items:center}
+
+/* Buttons */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; font-family:var(--display); font-weight:600; font-size:16px; padding:15px 26px; border-radius:14px; text-decoration:none; border:2px solid transparent; cursor:pointer; line-height:1.2; transition:background-color .15s, transform .15s, box-shadow .15s}
+.btn:active{transform:translateY(1px)}
+.btn-amber{background:var(--amber); color:#0B3C5D; box-shadow:0 8px 20px -8px rgba(245,166,35,.7)}
+.btn-amber:hover{background:var(--amber-hover)}
+.btn-line{border-color:rgba(255,255,255,.45); color:#FFFFFF; background:rgba(255,255,255,.06)}
+.btn-line:hover{background:rgba(255,255,255,.14)}
+.btn svg{width:20px; height:20px; flex:none}
+
+/* Header */
+.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:50; background:color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter:blur(12px); border-bottom:1px solid var(--line)}
+.top .wrap{display:flex; align-items:center; gap:24px; height:72px}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none; font-family:'Poppins',sans-serif; font-size:22px; letter-spacing:-.3px; white-space:nowrap}
+.brand .a{color:var(--heading); font-weight:600}.brand .b{color:var(--green-ink); font-weight:700}
+.nav{display:flex; gap:24px; margin-left:auto}
+.nav a{text-decoration:none; color:var(--ink); font-size:15px; font-weight:500; padding:6px 0; border-bottom:2px solid transparent}
+.nav a:hover{border-bottom-color:var(--green)}
+.lang{display:flex; background:var(--surface); border-radius:999px; padding:3px; flex:none}
+.lang button{border:0; background:transparent; color:var(--muted); font:600 14px var(--body); padding:6px 12px; border-radius:999px; cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--bg); color:var(--heading); box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.top .btn{padding:10px 18px; font-size:15px; box-shadow:none}
+@media (max-width:960px){.nav{display:none}.lang{margin-left:auto}}
+@media (max-width:760px){.top .btn{display:none}}
+
+/* Hero */
+.hero{position:relative; overflow:hidden; color:var(--on-dark); padding:80px 0 120px;
+  background:radial-gradient(70% 90% at 85% 10%, color-mix(in srgb, var(--leaf) 22%, transparent), transparent 60%), linear-gradient(160deg, var(--hero-a), var(--hero-b))}
+.hero::before{content:""; position:absolute; inset:0; background-image:radial-gradient(var(--dot) 1.5px, transparent 1.7px); background-size:26px 26px; mask-image:linear-gradient(to bottom, #000 40%, transparent)}
+.hero::after{content:""; position:absolute; left:0; right:0; bottom:-1px; height:70px; background:var(--bg); clip-path:ellipse(75% 100% at 50% 100%)}
+.hero .wrap{position:relative; display:grid; grid-template-columns:1.05fr 1fr; gap:56px; align-items:center}
+.hero h1{color:#FFFFFF; font-size:clamp(40px, 6.2vw, 70px); font-weight:800; letter-spacing:-2px; line-height:1.02}
+.hero h1 .l2{display:block; color:var(--leaf)}
+.hero .lede{margin:24px 0 34px; font-size:19px; color:var(--on-dark-muted)}
+.hero-ctas{display:flex; flex-wrap:wrap; gap:14px}
+.badges{list-style:none; padding:0; margin:36px 0 0; display:flex; flex-wrap:wrap; gap:10px}
+.badges li{display:flex; align-items:center; gap:8px; padding:8px 14px 8px 10px; border-radius:999px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); font-size:14px; font-weight:500}
+.badges svg{width:20px; height:20px; flex:none}
+.journey{position:relative; background:var(--bg); border-radius:28px; padding:22px 22px 10px; box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+.journey-head{display:flex; justify-content:space-between; align-items:center; padding:4px 6px 0}
+.journey-head strong{font-family:var(--display); color:var(--heading); font-size:17px}
+.journey-head span{font-size:13px; font-weight:600; color:var(--green-ink); background:var(--mint); padding:5px 10px; border-radius:999px}
+.journey svg{display:block; width:100%; height:auto}
+.journey text{font-family:var(--display); font-weight:600; font-size:17px; fill:var(--heading)}
+.trail{stroke-dasharray:1; stroke-dashoffset:1; animation:draw 2.6s .4s cubic-bezier(.6,0,.3,1) forwards}
+.stop{opacity:0; animation:pop .45s ease-out forwards}
+.s1{animation-delay:.2s}.s2{animation-delay:1.1s}.s3{animation-delay:1.9s}.s4{animation-delay:2.8s}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:none}}
+@media (prefers-reduced-motion:reduce){.trail{animation:none; stroke-dashoffset:0}.stop{animation:none; opacity:1}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr; gap:40px}.hero{padding:48px 0 100px}}
+
+/* Reason explorer */
+.explorer{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:28px; align-items:stretch}
+.reason-list{display:grid; gap:10px; align-content:start}
+.reason-list button{display:flex; align-items:center; gap:14px; width:100%; text-align:left; font:600 17px var(--display); color:var(--heading); background:var(--soft); border:2px solid var(--line); border-radius:16px; padding:16px 18px; cursor:pointer; transition:border-color .15s, background-color .15s}
+.reason-list button::before{content:""; width:12px; height:12px; border-radius:50%; border:2.5px solid var(--muted); flex:none}
+.reason-list button:hover{border-color:var(--green)}
+.reason-list button[aria-pressed="true"]{background:var(--mint); border-color:var(--green)}
+.reason-list button[aria-pressed="true"]::before{background:var(--green); border-color:var(--green)}
+.reason-panel{position:relative; background:linear-gradient(160deg, var(--hero-a), var(--hero-b)); color:var(--on-dark); border-radius:26px; padding:38px; display:grid; gap:26px; align-content:start; overflow:hidden}
+.reason-panel::after{content:""; position:absolute; right:-60px; bottom:-60px; width:220px; height:264px; opacity:.08; background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M50 4 L92 18 V58 C92 86 74 106 50 116 C26 106 8 86 8 58 V18 Z' fill='white'/%3E%3C/svg%3E")}
+.rp-block{display:grid; gap:8px; position:relative}
+.rp-label{font-size:14px; font-weight:600; color:var(--on-dark-muted); display:flex; align-items:center; gap:8px}
+.rp-label i{width:22px; height:22px; border-radius:50%; display:grid; place-items:center; flex:none}
+.rp-label i.say{background:var(--amber)}.rp-label i.check{background:var(--leaf)}
+.rp-label svg{width:13px; height:13px}
+.rp-say{font-family:var(--display); font-size:24px; font-weight:600; line-height:1.3; color:#FFFFFF}
+.rp-check{font-size:18px; color:#E8F4F8}
+.reason-panel .btn{justify-self:start; position:relative}
+.reason-panel.swap .rp-say,.reason-panel.swap .rp-check{animation:pop .3s ease-out}
+@media (prefers-reduced-motion:reduce){.reason-panel.swap .rp-say,.reason-panel.swap .rp-check{animation:none}}
+@media (max-width:860px){.explorer{grid-template-columns:1fr}.reason-list{grid-template-columns:1fr 1fr}.reason-list button{font-size:15px; padding:12px 14px}.reason-panel{padding:28px}}
+@media (max-width:420px){.reason-list{grid-template-columns:1fr}}
+
+/* Steps */
+.how{background:var(--soft)}
+.steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4, 1fr); gap:22px; position:relative}
+.steps::before{content:""; position:absolute; top:58px; left:12%; right:12%; border-top:3px dashed color-mix(in srgb, var(--green) 50%, var(--line))}
+.steps li{position:relative; background:var(--bg); border-radius:22px; padding:28px 24px; box-shadow:var(--card-shadow); display:grid; gap:10px; align-content:start}
+.num{width:60px; height:60px; border-radius:18px; background:#13805C; color:#FFFFFF; font-family:var(--display); font-weight:700; font-size:24px; display:grid; place-items:center; margin-bottom:8px}
+.steps li:last-child .num{background:var(--amber); color:#0B3C5D}
+.steps p{color:var(--muted); font-size:16px}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}.steps::before{display:none}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* Services */
+.svc{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px}
+.svc article{border:1.5px solid var(--line); border-radius:22px; padding:28px; display:grid; gap:10px; align-content:start; transition:border-color .2s, box-shadow .2s, transform .2s}
+.svc article:hover{border-color:var(--green); box-shadow:var(--card-shadow); transform:translateY(-3px)}
+@media (prefers-reduced-motion:reduce){.svc article:hover{transform:none}}
+.ico{width:56px; height:56px; border-radius:16px; background:var(--surface); display:grid; place-items:center; margin-bottom:6px}
+.ico svg{width:32px; height:32px}
+.svc p{color:var(--muted); font-size:16px}
+@media (max-width:960px){.svc{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.svc{grid-template-columns:1fr}}
+
+/* Why */
+.why-sec{background:var(--mint)}
+.split{display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:start}
+.who{list-style:none; padding:0; margin:26px 0 0; display:flex; flex-wrap:wrap; gap:10px}
+.who li{background:var(--bg); border-radius:999px; padding:10px 18px; font-weight:500; font-size:16px; box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.facts{margin-top:36px; display:grid; grid-template-columns:repeat(3, 1fr); gap:14px}
+.facts div{background:var(--bg); border-radius:18px; padding:18px; display:grid; gap:2px}
+.facts strong{font-family:var(--display); color:var(--heading); font-size:28px; line-height:1.1}
+.facts span{font-size:14px; color:var(--muted)}
+.why{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+.why div{background:var(--bg); border-radius:22px; padding:26px; display:grid; gap:8px; align-content:start}
+.why p{color:var(--muted); font-size:16px}
+.why .ico{background:var(--mint)}
+@media (max-width:900px){.split{grid-template-columns:1fr; gap:44px}}
+@media (max-width:560px){.why{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr 1fr}.facts strong{font-size:22px}}
+
+/* Fees + testimonials */
+.fees .wrap{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:stretch}
+.fee-box{background:var(--surface); border-radius:26px; padding:38px; display:grid; gap:16px; align-content:start}
+.fee-box .big{font-family:var(--display); font-size:clamp(26px, 3vw, 34px); font-weight:700; color:var(--heading); line-height:1.2}
+.fee-box ul{list-style:none; padding:0; margin:4px 0 8px; display:grid; gap:10px}
+.fee-box li{display:flex; gap:10px; align-items:flex-start}
+.fee-box li svg{width:22px; height:22px; flex:none; margin-top:2px}
+.quotes-wrap{border:1.5px solid var(--line); border-radius:26px; padding:38px; display:grid; gap:20px; align-content:start}
+.quotes{display:grid; gap:16px}
+.quotes figure{margin:0; padding:0 0 16px; border-bottom:1px solid var(--line)}
+.quotes figure:last-child{border-bottom:0; padding-bottom:0}
+.stars{color:var(--amber); letter-spacing:2px; font-size:16px}
+.quotes blockquote{margin:6px 0 0; font-size:17px}
+.quotes figcaption{margin-top:8px; color:var(--muted); font-size:14px; font-weight:600}
+@media (max-width:900px){.fees .wrap{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-sec{background:var(--soft)}
+.faq-sec .wrap{display:grid; grid-template-columns:.8fr 1.2fr; gap:56px; align-items:start}
+.faq details{background:var(--bg); border-radius:18px; margin-bottom:12px; box-shadow:0 1px 2px rgba(0,0,0,.05); border:1.5px solid transparent}
+.faq details[open]{border-color:var(--green)}
+.faq summary{list-style:none; cursor:pointer; padding:20px 60px 20px 22px; position:relative; font-family:var(--display); font-weight:600; font-size:17px; color:var(--heading)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+"; position:absolute; right:18px; top:50%; transform:translateY(-50%); width:30px; height:30px; border-radius:50%; background:var(--surface); display:grid; place-items:center; font-size:20px; line-height:1; color:var(--heading)}
+.faq details[open] summary::after{content:"–"; background:var(--green); color:#FFFFFF}
+.faq details p{padding:0 22px 22px; color:var(--muted)}
+@media (max-width:900px){.faq-sec .wrap{grid-template-columns:1fr; gap:28px}}
+
+/* Contact */
+.contact{color:var(--on-dark); background:radial-gradient(60% 80% at 10% 0%, color-mix(in srgb, var(--leaf) 18%, transparent), transparent 60%), linear-gradient(160deg, var(--hero-a), var(--hero-b))}
+.contact .wrap{display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:start}
+.contact h2{color:#FFFFFF}
+.contact .lede{color:var(--on-dark-muted); margin-top:14px}
+.reach{list-style:none; padding:0; margin:32px 0 0; display:grid; gap:12px}
+.reach li{display:flex; gap:14px; align-items:center; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:14px 16px}
+.reach i{width:40px; height:40px; border-radius:12px; background:rgba(61,211,155,.16); display:grid; place-items:center; flex:none}
+.reach svg{width:22px; height:22px}
+.reach a,.reach span{color:#FFFFFF; font-weight:600}
+.form{background:var(--bg); color:var(--ink); border-radius:26px; padding:34px; display:grid; grid-template-columns:1fr 1fr; gap:18px; box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+.form h3{grid-column:1 / -1}
+.field{display:grid; gap:6px}
+.field.full{grid-column:1 / -1}
+.field label{font-weight:600; font-size:14px; color:var(--heading)}
+.field input,.field select,.field textarea{font:inherit; font-size:16px; color:var(--ink); background:var(--soft); border:1.5px solid var(--line); border-radius:12px; padding:13px 14px; width:100%}
+.field textarea{min-height:110px; resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none; border-color:var(--green); background:var(--bg); box-shadow:0 0 0 4px color-mix(in srgb, var(--green) 20%, transparent)}
+.field input[aria-invalid="true"]{border-color:var(--error)}
+.err{color:var(--error); font-size:14px}
+.err:empty{display:none}
+.check{grid-column:1 / -1; display:flex; gap:10px; align-items:flex-start; font-size:15px}
+.check input{width:20px; height:20px; margin-top:3px; accent-color:var(--green)}
+.form .btn{grid-column:1 / -1; padding:17px}
+.form-note{grid-column:1 / -1; font-size:14px; color:var(--muted); text-align:center}
+@media (max-width:900px){.contact .wrap{grid-template-columns:1fr}}
+@media (max-width:560px){.form{grid-template-columns:1fr; padding:24px}}
+
+/* Footer */
+footer{background:#061826; color:#A7B8C5; padding:44px 0 calc(44px + env(safe-area-inset-bottom,0px)); font-size:14px}
+footer .wrap{display:grid; gap:18px}
+footer .row{display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center; justify-content:space-between}
+footer nav{display:flex; flex-wrap:wrap; gap:8px 22px}
+footer a{color:#FFFFFF; text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .brand .a{color:#FFFFFF}footer .brand .b{color:#3DD39B}
+footer .disc{max-width:80ch}
+
+/* Floating WhatsApp (desktop) and action bar (mobile) */
+.wa-float{position:fixed; right:22px; bottom:calc(22px + env(safe-area-inset-bottom,0px)); z-index:40; width:62px; height:62px; border-radius:50%; background:#1FA67A; display:grid; place-items:center; box-shadow:0 10px 28px rgba(0,0,0,.3)}
+.wa-float svg{width:32px; height:32px}
+.mbar{display:none}
+@media (max-width:760px){
+  .wa-float{display:none}
+  .mbar{display:grid; grid-template-columns:1fr 1.4fr; gap:10px; position:fixed; left:0; right:0; bottom:0; z-index:45; padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px)); background:color-mix(in srgb, var(--bg) 95%, transparent); backdrop-filter:blur(12px); border-top:1px solid var(--line)}
+  .mbar a{display:flex; align-items:center; justify-content:center; gap:8px; padding:13px; border-radius:12px; font:600 16px var(--display); text-decoration:none}
+  .mbar .m-call{background:var(--surface); color:var(--heading)}
+  .mbar .m-wa{background:#13805C; color:#FFFFFF}
+  .mbar svg{width:20px; height:20px}
+  footer{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Mediclaimswala home">
+      <svg width="30" height="36" viewBox="0 0 100 120" aria-hidden="true"><path d="M50 4 L92 18 V58 C92 86 74 106 50 116 C26 106 8 86 8 58 V18 Z" fill="var(--heading)"/><rect x="42" y="30" width="16" height="56" rx="3" fill="var(--bg)"/><rect x="22" y="50" width="56" height="16" rx="3" fill="var(--bg)"/><circle cx="78" cy="92" r="20" fill="#1FA67A" stroke="var(--bg)" stroke-width="5"/><path d="M68 92 L75 99 L89 85" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><span class="a">Mediclaims</span><span class="b">wala</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#reasons" data-i18n="nav_reasons">Rejection reasons</a>
+      <a href="#how" data-i18n="nav_how">How it works</a>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#fees" data-i18n="nav_fees">Fees</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="hi" aria-pressed="false" lang="hi">हिंदी</button>
+    </div>
+    <a class="btn btn-amber" href="#contact" data-i18n="cta_short">Free case review</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <h1 id="hero-title"><span data-i18n="hero_l1">Claim rejected?</span><span class="l2" data-i18n="hero_l2">We’ve got your back.</span></h1>
+        <p class="lede" data-i18n="hero_sub">Expert, end-to-end help to get rejected, short-paid and delayed health insurance claims reconsidered, from people who know the insurance system from the inside.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-amber" href="#contact" data-i18n="cta_review">Get a free case review</a>
+          <a class="btn btn-line wa-link" href="https://wa.me/918502967063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.47-.72-1.7-.8s-.39-.12-.56.13-.64.8-.79.96-.29.19-.54.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33a.45.45 0 0 0-.02-.42c-.06-.12-.56-1.35-.77-1.85s-.41-.42-.56-.43h-.48a.92.92 0 0 0-.67.31 2.8 2.8 0 0 0-.87 2.08 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.69 2.2.75 3 .63a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .15-1.2c-.06-.1-.23-.17-.48-.29z"/></svg><span data-i18n="cta_wa">WhatsApp us</span></a>
+        </div>
+        <ul class="badges">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#3DD39B"/><path d="m7.5 12 3 3 6-6" fill="none" stroke="#0B3C5D" stroke-width="2.4" stroke-linecap="round"/></svg><span data-i18n="b1">Free first review</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#3DD39B"/><path d="m7.5 12 3 3 6-6" fill="none" stroke="#0B3C5D" stroke-width="2.4" stroke-linecap="round"/></svg><span data-i18n="b2">Help in Hindi and English</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#3DD39B"/><path d="m7.5 12 3 3 6-6" fill="none" stroke="#0B3C5D" stroke-width="2.4" stroke-linecap="round"/></svg><span data-i18n="b3">Fully confidential</span></li>
+        </ul>
+      </div>
+
+      <div class="journey">
+        <div class="journey-head"><strong data-i18n="jh">Your claim’s journey with us</strong><span data-i18n="jtag">End to end</span></div>
+        <svg viewBox="0 0 520 400" role="img" aria-labelledby="jt">
+          <title id="jt">A path from a rejected claim, through a free review and a filed case, to a resolved claim</title>
+          <path d="M70 330 C140 330 140 252 210 252 S300 166 345 166 S420 82 455 74" fill="none" stroke="var(--line)" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path class="trail" pathLength="1" d="M70 330 C140 330 140 252 210 252 S300 166 345 166 S420 82 455 74" fill="none" stroke="var(--green)" stroke-width="7" stroke-linecap="round"/>
+          <g class="stop s1"><circle cx="70" cy="330" r="30" fill="var(--bg)" stroke="var(--amber)" stroke-width="5"/><path d="M58 318 L82 342 M82 318 L58 342" stroke="var(--amber)" stroke-width="6" stroke-linecap="round"/><text x="70" y="388" text-anchor="middle" data-i18n="j1">Claim rejected</text></g>
+          <g class="stop s2"><circle cx="210" cy="252" r="28" fill="var(--bg)" stroke="var(--heading)" stroke-width="5"/><circle cx="206" cy="248" r="10" fill="none" stroke="var(--heading)" stroke-width="4"/><path d="M213 255 L221 263" stroke="var(--heading)" stroke-width="5" stroke-linecap="round"/><text x="210" y="308" text-anchor="middle" data-i18n="j2">Free review</text></g>
+          <g class="stop s3"><circle cx="345" cy="166" r="28" fill="var(--bg)" stroke="var(--heading)" stroke-width="5"/><path d="M332 158 H342 L346 162 H358 V176 H332 Z" fill="var(--amber)"/><text x="345" y="222" text-anchor="middle" data-i18n="j3">Case filed</text></g>
+          <g class="stop s4"><circle cx="455" cy="74" r="38" fill="var(--green)"/><path d="M438 75 L450 87 L473 62" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><text x="455" y="140" text-anchor="middle" data-i18n="j4">Resolved</text></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="reasons" aria-labelledby="reasons-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="reasons-title" data-i18n="ex_title">What did your insurer say?</h2>
+        <p class="lede" data-i18n="ex_sub">Pick the reason on your rejection letter to see what we look into.</p>
+      </div>
+      <div class="explorer">
+        <div class="reason-list" role="group" aria-label="Rejection reasons">
+          <button type="button" data-r="pre" aria-pressed="true" aria-controls="rpanel" data-i18n="r1">Pre-existing disease</button>
+          <button type="button" data-r="wait" aria-pressed="false" aria-controls="rpanel" data-i18n="r2">Waiting period</button>
+          <button type="button" data-r="nd" aria-pressed="false" aria-controls="rpanel" data-i18n="r3">Non-disclosure</button>
+          <button type="button" data-r="nmn" aria-pressed="false" aria-controls="rpanel" data-i18n="r4">“Not medically necessary”</button>
+          <button type="button" data-r="room" aria-pressed="false" aria-controls="rpanel" data-i18n="r5">Room-rent capping</button>
+          <button type="button" data-r="docs" aria-pressed="false" aria-controls="rpanel" data-i18n="r6">Missing documents</button>
+        </div>
+        <div class="reason-panel" id="rpanel" aria-live="polite">
+          <div class="rp-block">
+            <span class="rp-label"><i class="say"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#0B3C5D" stroke-width="2.4" stroke-linecap="round"/></svg></i><span data-i18n="ex_say">What the insurer says</span></span>
+            <p class="rp-say" id="rp-say"></p>
+          </div>
+          <div class="rp-block">
+            <span class="rp-label"><i class="check"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-6.5" fill="none" stroke="#0B3C5D" stroke-width="2.4" stroke-linecap="round"/></svg></i><span data-i18n="ex_check">What we check</span></span>
+            <p class="rp-check" id="rp-check"></p>
+          </div>
+          <a class="btn btn-amber" href="#contact" data-i18n="ex_cta">Get this reason reviewed free</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="sec-head center">
+        <h2 id="how-title" data-i18n="how_title">How it works</h2>
+        <p class="lede" data-i18n="how_sub">You share the documents. We handle the rest.</p>
+      </div>
+      <ol class="steps">
+        <li><span class="num" aria-hidden="true">1</span><h3 data-i18n="s1t">Share your documents</h3><p data-i18n="s1p">Send your policy, rejection letter and hospital papers on WhatsApp or through the form.</p></li>
+        <li><span class="num" aria-hidden="true">2</span><h3 data-i18n="s2t">Free expert review</h3><p data-i18n="s2p">We study your case and tell you honestly whether it’s worth pursuing.</p></li>
+        <li><span class="num" aria-hidden="true">3</span><h3 data-i18n="s3t">We build and file your case</h3><p data-i18n="s3p">A clear, well-documented representation to the insurer or TPA.</p></li>
+        <li><span class="num" aria-hidden="true">4</span><h3 data-i18n="s4t">We follow up until it’s resolved</h3><p data-i18n="s4p">Replies, reminders and escalation to the grievance cell and Insurance Ombudsman when needed.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="services" aria-labelledby="svc-title">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="svc-title" data-i18n="svc_title">What we do</h2><p class="lede" data-i18n="svc_sub">Whatever stage your claim is stuck at, we take it from there.</p></div>
+      <div class="svc">
+        <article><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="8" y="5" width="26" height="34" rx="4" fill="var(--bg)" stroke="var(--heading)" stroke-width="3"/><path d="M14 15h14M14 21h14M14 27h8" stroke="var(--heading)" stroke-width="3" stroke-linecap="round"/><circle cx="33" cy="33" r="8" fill="var(--green)"/><path d="m29.5 33 2.5 2.5 4.5-4.5" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></span><h3 data-i18n="v1t">Rejected claims</h3><p data-i18n="v1p">Get a rejected claim reconsidered with a strong, evidence-backed case.</p></article>
+        <article><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="16" fill="var(--bg)" stroke="var(--heading)" stroke-width="3"/><path d="M16 15h12M16 21h12M22 21c4 0 6-3 6-6M22 21l-6 9" stroke="var(--heading)" stroke-width="3" stroke-linecap="round" fill="none"/></svg></span><h3 data-i18n="v2t">Short-paid claims</h3><p data-i18n="v2p">Recover deductions that the policy terms don’t justify.</p></article>
+        <article><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="16" fill="var(--bg)" stroke="var(--heading)" stroke-width="3"/><path d="M22 12v10l7 5" stroke="var(--amber)" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg></span><h3 data-i18n="v3t">Delayed claims</h3><p data-i18n="v3p">Follow-up and escalation when a settlement is stuck.</p></article>
+        <article><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M8 38h28M12 34V18M22 34V18M32 34V18M6 16 22 6l16 10z" stroke="var(--heading)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none"/></svg></span><h3 data-i18n="v4t">Grievance and Ombudsman support</h3><p data-i18n="v4p">Help with the insurer’s grievance cell, the Bima Bharosa portal and the Insurance Ombudsman.</p></article>
+        <article><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="15" cy="15" r="6" fill="none" stroke="var(--heading)" stroke-width="3"/><circle cx="30" cy="17" r="5" fill="none" stroke="var(--heading)" stroke-width="3"/><path d="M4 36c1-7 6-11 11-11s10 4 11 11M26 27c5 0 10 3 12 9" stroke="var(--heading)" stroke-width="3" stroke-linecap="round" fill="none"/></svg></span><h3 data-i18n="v5t">Group and corporate claims</h3><p data-i18n="v5p">Support for HR teams and employees on group health policies.</p></article>
+        <article><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5 36 10v11c0 9-6 15-14 18C14 36 8 30 8 21V10z" fill="var(--bg)" stroke="var(--heading)" stroke-width="3" stroke-linejoin="round"/><path d="M22 15v6M22 26v1" stroke="var(--green)" stroke-width="3.5" stroke-linecap="round"/></svg></span><h3 data-i18n="v6t">Policy guidance</h3><p data-i18n="v6p">Understand exclusions, waiting periods and sub-limits before you claim.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-sec" aria-labelledby="why-title">
+    <div class="wrap split">
+      <div>
+        <h2 id="why-title" data-i18n="why_title">Why Mediclaimswala</h2>
+        <p class="lede" style="margin-top:14px" data-i18n="who_title">We help families, senior citizens, employees and the people who look after them.</p>
+        <ul class="who">
+          <li data-i18n="w1">Families with individual or floater policies</li>
+          <li data-i18n="w2">Senior citizens and their children</li>
+          <li data-i18n="w3">Employees with group mediclaim</li>
+          <li data-i18n="w4">HR teams</li>
+          <li data-i18n="w5">Hospitals and doctors</li>
+        </ul>
+        <div class="facts">
+          <div><strong>[X]+</strong><span data-i18n="f1">years in the insurance sector</span></div>
+          <div><strong>[X]+</strong><span data-i18n="f2">claims handled</span></div>
+          <div><strong>₹[X]</strong><span data-i18n="f3">recovered for clients</span></div>
+        </div>
+      </div>
+      <div class="why">
+        <div><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="20" r="11" fill="none" stroke="var(--heading)" stroke-width="3.5"/><path d="M28 28l9 9" stroke="var(--green)" stroke-width="4" stroke-linecap="round"/></svg></span><h3 data-i18n="y1t">Insider expertise</h3><p data-i18n="y1p">Our team has worked inside the insurance and healthcare sector, so we know how claims are assessed and why they get rejected.</p></div>
+        <div><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M8 32c6 0 6-20 14-20s8 20 14 20" fill="none" stroke="var(--heading)" stroke-width="3.5" stroke-linecap="round"/><circle cx="8" cy="32" r="4" fill="var(--amber)"/><circle cx="36" cy="32" r="4" fill="var(--green)"/></svg></span><h3 data-i18n="y2t">End-to-end handling</h3><p data-i18n="y2p">From document review to final resolution, one team handles it all.</p></div>
+        <div><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M10 24l8 8 16-18" fill="none" stroke="var(--green)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3 data-i18n="y3t">Honest advice</h3><p data-i18n="y3p">If your case isn’t strong, we’ll tell you upfront.</p></div>
+        <div><span class="ico"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="11" y="20" width="22" height="16" rx="4" fill="var(--heading)"/><path d="M15 20v-4a7 7 0 0 1 14 0v4" fill="none" stroke="var(--heading)" stroke-width="3.5"/><circle cx="22" cy="28" r="2.5" fill="var(--bg)"/></svg></span><h3 data-i18n="y4t">Your data stays private</h3><p data-i18n="y4p">Your medical documents are used only for your case.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fees" class="fees" aria-labelledby="fees-title">
+    <div class="wrap">
+      <div class="fee-box">
+        <h2 id="fees-title" data-i18n="fees_title">Clear, upfront fees</h2>
+        <p class="big" data-i18n="fees_big">Your first case review is free.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="var(--green)"/><path d="m7.5 12 3 3 6-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg><span data-i18n="fee1">The full fee in writing before we start</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="var(--green)"/><path d="m7.5 12 3 3 6-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg><span data-i18n="fee2">No hidden charges</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="var(--green)"/><path d="m7.5 12 3 3 6-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg><span data-i18n="fees_model">[Fee model: fixed fee / percentage of amount recovered]</span></li>
+        </ul>
+        <a class="btn btn-amber" href="#contact" style="justify-self:start" data-i18n="cta_review">Get a free case review</a>
+      </div>
+      <div class="quotes-wrap">
+        <h2 data-i18n="t_title">What clients say</h2>
+        <div class="quotes">
+          <figure><span class="stars" aria-hidden="true">★★★★★</span><blockquote data-i18n="t1">[Client testimonial, shared with permission]</blockquote><figcaption>[Name], [City]</figcaption></figure>
+          <figure><span class="stars" aria-hidden="true">★★★★★</span><blockquote data-i18n="t1">[Client testimonial, shared with permission]</blockquote><figcaption>[Name], [City]</figcaption></figure>
+          <figure><span class="stars" aria-hidden="true">★★★★★</span><blockquote data-i18n="t1">[Client testimonial, shared with permission]</blockquote><figcaption>[Name], [City]</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq-sec" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="sec-head" style="margin:0">
+        <h2 id="faq-title" data-i18n="faq_title">Questions people ask</h2>
+        <p class="lede" data-i18n="faq_sub">Can’t find your answer? Ask us on WhatsApp.</p>
+        <a class="btn btn-amber wa-link" href="https://wa.me/918502967063" target="_blank" rel="noopener" style="justify-self:start" data-i18n="cta_wa">WhatsApp us</a>
+      </div>
+      <div class="faq">
+        <details open><summary data-i18n="q1">My claim was rejected months ago. Can it still be challenged?</summary><p data-i18n="a1">Often, yes. Each stage has time limits, so share your documents as soon as you can and we’ll check where you stand.</p></details>
+        <details><summary data-i18n="q2">Do you guarantee my claim will be approved?</summary><p data-i18n="a2">No one can honestly guarantee that. The final decision rests with the insurer or the Ombudsman. What we promise is an expert, well-prepared case and steady follow-up.</p></details>
+        <details><summary data-i18n="q3">Can I approach the insurer or Ombudsman myself?</summary><p data-i18n="a3">Yes. Policyholders can approach the insurer’s grievance cell, the IRDAI Bima Bharosa portal and the Insurance Ombudsman directly, free of cost. We help people who want experienced support through that process.</p></details>
+        <details><summary data-i18n="q4">What documents do I need?</summary><p data-i18n="a4">Usually your policy copy, the rejection or settlement letter, the discharge summary, hospital bills and any letters exchanged with the insurer. Send what you have and we’ll tell you if anything else is needed.</p></details>
+        <details><summary data-i18n="q5">Which insurers do you work with?</summary><p data-i18n="a5">We help with claims from public and private health insurers and TPAs across India.</p></details>
+        <details><summary data-i18n="q6">Is my information kept private?</summary><p data-i18n="a6">Yes. Your documents are used only to work on your case and are never shared without your consent.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div>
+        <h2 id="contact-title" data-i18n="band_title">Don’t give up on your claim.</h2>
+        <p class="lede" data-i18n="contact_sub">Tell us a little about your claim and we’ll get back to you on WhatsApp.</p>
+        <ul class="reach">
+          <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3DD39B" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></i><a href="tel:+918502967063">+91 85029 67063</a></li>
+          <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3DD39B" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></i><a class="wa-link" href="https://wa.me/918502967063" target="_blank" rel="noopener" data-i18n="cta_wa">WhatsApp us</a></li>
+          <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#3DD39B" stroke-width="2" d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg></i><span>[your email]@mediclaimswala.in</span></li>
+          <li><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3DD39B" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></i><span>[Office address, City]</span></li>
+        </ul>
+      </div>
+
+      <form class="form" id="lead" novalidate>
+        <h3 data-i18n="cta_review">Get a free case review</h3>
+        <div class="field"><label for="f-name" data-i18n="l_name">Full name</label><input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name"><span class="err" id="e-name" aria-live="polite"></span></div>
+        <div class="field"><label for="f-phone" data-i18n="l_phone">Mobile number</label><input id="f-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" required aria-describedby="e-phone"><span class="err" id="e-phone" aria-live="polite"></span></div>
+        <div class="field"><label for="f-city" data-i18n="l_city">City</label><input id="f-city" name="city" autocomplete="address-level2"></div>
+        <div class="field"><label for="f-ins" data-i18n="l_ins">Insurance company</label><input id="f-ins" name="insurer"></div>
+        <div class="field"><label for="f-status" data-i18n="l_status">Claim status</label>
+          <select id="f-status" name="status"><option value="Rejected" data-i18n="o1">Rejected</option><option value="Partly paid" data-i18n="o2">Partly paid</option><option value="Pending or delayed" data-i18n="o3">Pending or delayed</option></select></div>
+        <div class="field"><label for="f-amt" data-i18n="l_amt">Approx. claim amount (₹)</label><input id="f-amt" name="amount" inputmode="numeric"></div>
+        <div class="field full"><label for="f-msg" data-i18n="l_msg">What happened?</label><textarea id="f-msg" name="message"></textarea></div>
+        <label class="check"><input type="checkbox" id="f-ok" aria-describedby="e-ok"><span data-i18n="l_ok">I agree to be contacted about my claim.</span></label>
+        <span class="err" id="e-ok" aria-live="polite" style="grid-column:1 / -1"></span>
+        <button class="btn btn-amber" type="submit" data-i18n="send">Send on WhatsApp</button>
+        <p class="form-note" data-i18n="form_note">After sending, you can share your documents in the same WhatsApp chat.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span class="brand"><span class="a">Mediclaims</span><span class="b">wala</span></span>
+      <nav aria-label="Footer">
+        <a href="#how" data-i18n="nav_how">How it works</a><a href="#services" data-i18n="nav_services">Services</a><a href="#faq" data-i18n="nav_faq">FAQ</a><a href="#" data-i18n="privacy">Privacy policy</a><a href="#" data-i18n="terms">Terms</a>
+      </nav>
+    </div>
+    <p class="disc" data-i18n="disclaimer">Mediclaimswala is an independent claim consultancy and is not affiliated with any insurance company, TPA or IRDAI. Outcomes depend on policy terms and the insurer’s decision.</p>
+    <p>© 2026 Mediclaimswala</p>
+  </div>
+</footer>
+
+<a class="wa-float wa-link" href="https://wa.me/918502967063" target="_blank" rel="noopener" aria-label="Chat with Mediclaimswala on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.47-.72-1.7-.8s-.39-.12-.56.13-.64.8-.79.96-.29.19-.54.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33a.45.45 0 0 0-.02-.42c-.06-.12-.56-1.35-.77-1.85s-.41-.42-.56-.43h-.48a.92.92 0 0 0-.67.31 2.8 2.8 0 0 0-.87 2.08 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.69 2.2.75 3 .63a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .15-1.2c-.06-.1-.23-.17-.48-.29z"/></svg></a>
+
+<div class="mbar">
+  <a class="m-call" href="tel:+918502967063"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span data-i18n="call">Call</span></a>
+  <a class="m-wa wa-link" href="https://wa.me/918502967063" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span data-i18n="cta_wa">WhatsApp us</span></a>
+</div>
+
+<script>
+(function () {
+  var WA = '918502967063';
+  var REASONS = {
+    en: {
+      pre: ['The illness existed before you bought the policy.', 'Whether it was truly pre-existing, whether the waiting period is already over, and what was declared in your proposal form.'],
+      wait: ['The treatment falls within a waiting period.', 'Your policy start date, continuity benefits from earlier or ported policies, and whether the illness is actually listed.'],
+      nd: ['Something wasn’t declared when you bought the policy.', 'Whether you knew about the condition at the time, whether it was material, and whether it relates to this claim at all.'],
+      nmn: ['The hospital stay wasn’t medically necessary.', 'Your doctor’s notes and treatment records, and whether the treating doctor’s advice supports the admission.'],
+      room: ['Your room was above the policy limit, so other charges were cut too.', 'Whether the proportionate deductions match your policy wording and were applied only to the charges they should cover.'],
+      docs: ['Required documents weren’t submitted.', 'Which documents are missing, how to get them from the hospital, and how to resubmit them before the deadline.']
+    },
+    hi: {
+      pre: ['बीमारी पॉलिसी लेने से पहले से थी।', 'क्या बीमारी सच में पहले से थी, वेटिंग पीरियड पूरा हुआ या नहीं, और प्रपोज़ल फ़ॉर्म में क्या बताया गया था।'],
+      wait: ['इलाज वेटिंग पीरियड के अंदर आता है।', 'पॉलिसी शुरू होने की तारीख, पिछली या पोर्ट की गई पॉलिसी से मिलने वाला लाभ, और क्या बीमारी सच में सूची में है।'],
+      nd: ['पॉलिसी लेते समय कोई जानकारी नहीं दी गई।', 'क्या उस समय आपको इस स्थिति की जानकारी थी, क्या यह अहम थी, और क्या इसका इस क्लेम से कोई संबंध है।'],
+      nmn: ['अस्पताल में भर्ती होना चिकित्सकीय रूप से ज़रूरी नहीं था।', 'डॉक्टर के नोट्स और इलाज के रिकॉर्ड, और क्या इलाज करने वाले डॉक्टर की सलाह भर्ती को सही ठहराती है।'],
+      room: ['कमरा पॉलिसी की सीमा से ऊपर था, इसलिए बाकी खर्चों में भी कटौती की गई।', 'क्या अनुपातिक कटौती आपकी पॉलिसी की शर्तों के मुताबिक है और सिर्फ़ उन्हीं खर्चों पर लगी है जिन पर लगनी चाहिए।'],
+      docs: ['ज़रूरी दस्तावेज़ जमा नहीं किए गए।', 'कौन-से दस्तावेज़ कम हैं, उन्हें अस्पताल से कैसे लें, और समय-सीमा से पहले दोबारा कैसे जमा करें।']
+    }
+  };
+  var HI = {
+    nav_reasons: 'रिजेक्शन के कारण', nav_how: 'प्रक्रिया', nav_services: 'सेवाएँ', nav_fees: 'फ़ीस', nav_faq: 'सवाल-जवाब',
+    cta_short: 'मुफ़्त केस रिव्यू', call: 'कॉल करें',
+    hero_l1: 'क्लेम रिजेक्ट हुआ?', hero_l2: 'हम आपके साथ हैं।',
+    hero_sub: 'रिजेक्ट, कम भुगतान वाले या अटके हुए हेल्थ इंश्योरेंस क्लेम पर दोबारा विचार करवाने के लिए शुरू से अंत तक विशेषज्ञ मदद, उन लोगों से जो इंश्योरेंस सिस्टम को अंदर से जानते हैं।',
+    cta_review: 'मुफ़्त केस रिव्यू पाएँ', cta_wa: 'WhatsApp करें',
+    b1: 'पहला रिव्यू मुफ़्त', b2: 'हिंदी और अंग्रेज़ी में मदद', b3: 'पूरी तरह गोपनीय',
+    jh: 'हमारे साथ आपके क्लेम का सफ़र', jtag: 'शुरू से अंत तक',
+    j1: 'क्लेम रिजेक्ट', j2: 'मुफ़्त रिव्यू', j3: 'केस फ़ाइल', j4: 'समाधान',
+    ex_title: 'बीमा कंपनी ने क्या कारण बताया?', ex_sub: 'अपने रिजेक्शन लेटर पर लिखा कारण चुनें और देखें कि हम क्या जाँचते हैं।',
+    ex_say: 'बीमा कंपनी का कहना', ex_check: 'हम क्या जाँचते हैं', ex_cta: 'इस कारण का मुफ़्त रिव्यू पाएँ',
+    r1: 'पहले से मौजूद बीमारी', r2: 'वेटिंग पीरियड', r3: 'जानकारी न देना', r4: '“इलाज ज़रूरी नहीं था”', r5: 'रूम-रेंट की सीमा', r6: 'दस्तावेज़ों की कमी',
+    how_title: 'हम कैसे काम करते हैं', how_sub: 'आप दस्तावेज़ भेजें, बाकी हम संभालेंगे।',
+    s1t: 'अपने दस्तावेज़ भेजें', s1p: 'पॉलिसी, रिजेक्शन लेटर और अस्पताल के काग़ज़ WhatsApp या फ़ॉर्म से भेजें।',
+    s2t: 'मुफ़्त विशेषज्ञ रिव्यू', s2p: 'हम आपका केस देखकर ईमानदारी से बताते हैं कि इसे आगे बढ़ाना सही है या नहीं।',
+    s3t: 'हम केस तैयार करके फ़ाइल करते हैं', s3p: 'बीमा कंपनी या TPA को साफ़ और पूरे दस्तावेज़ों के साथ प्रतिनिधित्व।',
+    s4t: 'समाधान तक फ़ॉलो-अप', s4p: 'जवाब, रिमाइंडर और ज़रूरत पड़ने पर ग्रीवेंस सेल व इंश्योरेंस ओम्बड्समैन तक शिकायत।',
+    svc_title: 'हमारी सेवाएँ', svc_sub: 'आपका क्लेम जिस भी चरण पर अटका हो, हम वहीं से आगे संभालते हैं।',
+    v1t: 'रिजेक्ट हुए क्लेम', v1p: 'मज़बूत, सबूतों के साथ केस बनाकर रिजेक्ट क्लेम पर दोबारा विचार करवाएँ।',
+    v2t: 'कम भुगतान वाले क्लेम', v2p: 'ऐसी कटौतियाँ वापस पाएँ जो पॉलिसी की शर्तों से सही नहीं ठहरतीं।',
+    v3t: 'अटके हुए क्लेम', v3p: 'सेटलमेंट अटकने पर फ़ॉलो-अप और शिकायत।',
+    v4t: 'ग्रीवेंस और ओम्बड्समैन सहायता', v4p: 'बीमा कंपनी के ग्रीवेंस सेल, बीमा भरोसा पोर्टल और इंश्योरेंस ओम्बड्समैन में मदद।',
+    v5t: 'ग्रुप और कॉर्पोरेट क्लेम', v5p: 'ग्रुप हेल्थ पॉलिसी पर HR टीम और कर्मचारियों के लिए सहायता।',
+    v6t: 'पॉलिसी मार्गदर्शन', v6p: 'क्लेम से पहले एक्सक्लूज़न, वेटिंग पीरियड और सब-लिमिट समझें।',
+    why_title: 'Mediclaimswala क्यों', who_title: 'हम परिवारों, वरिष्ठ नागरिकों, कर्मचारियों और उनकी देखभाल करने वालों की मदद करते हैं।',
+    w1: 'इंडिविजुअल या फ़्लोटर पॉलिसी वाले परिवार', w2: 'वरिष्ठ नागरिक और उनके बच्चे', w3: 'ग्रुप मेडिक्लेम वाले कर्मचारी', w4: 'HR टीमें', w5: 'अस्पताल और डॉक्टर',
+    y1t: 'अंदर की समझ', y1p: 'हमारी टीम ने इंश्योरेंस और हेल्थकेयर सेक्टर में काम किया है, इसलिए हम जानते हैं कि क्लेम कैसे जाँचे जाते हैं और क्यों रिजेक्ट होते हैं।',
+    y2t: 'शुरू से अंत तक', y2p: 'दस्तावेज़ रिव्यू से अंतिम समाधान तक, सब एक ही टीम संभालती है।',
+    y3t: 'ईमानदार सलाह', y3p: 'अगर आपका केस मज़बूत नहीं है, तो हम पहले ही बता देंगे।',
+    y4t: 'आपकी जानकारी सुरक्षित', y4p: 'आपके मेडिकल दस्तावेज़ सिर्फ़ आपके केस के लिए इस्तेमाल होते हैं।',
+    f1: 'साल का इंश्योरेंस अनुभव', f2: 'क्लेम संभाले', f3: 'क्लाइंट्स के लिए वसूल किए',
+    fees_title: 'साफ़ और पहले से तय फ़ीस', fees_big: 'आपका पहला केस रिव्यू मुफ़्त है।',
+    fee1: 'काम शुरू करने से पहले पूरी फ़ीस लिखित में', fee2: 'कोई छिपा शुल्क नहीं', fees_model: '[फ़ीस मॉडल: तय फ़ीस / वसूली गई राशि का प्रतिशत]',
+    t_title: 'क्लाइंट्स क्या कहते हैं', t1: '[क्लाइंट की राय, अनुमति के साथ]',
+    faq_title: 'अक्सर पूछे जाने वाले सवाल', faq_sub: 'आपका सवाल यहाँ नहीं है? WhatsApp पर पूछें।',
+    q1: 'मेरा क्लेम कई महीने पहले रिजेक्ट हुआ था। क्या अब भी चुनौती दी जा सकती है?', a1: 'अक्सर हाँ। हर चरण की समय-सीमा होती है, इसलिए जल्द से जल्द दस्तावेज़ भेजें, हम आपकी स्थिति जाँच लेंगे।',
+    q2: 'क्या आप क्लेम मंज़ूर होने की गारंटी देते हैं?', a2: 'कोई भी ईमानदारी से यह गारंटी नहीं दे सकता। अंतिम फ़ैसला बीमा कंपनी या ओम्बड्समैन का होता है। हम विशेषज्ञ तरीके से तैयार केस और लगातार फ़ॉलो-अप का वादा करते हैं।',
+    q3: 'क्या मैं खुद बीमा कंपनी या ओम्बड्समैन के पास जा सकता हूँ?', a3: 'हाँ। पॉलिसीधारक बीमा कंपनी के ग्रीवेंस सेल, IRDAI के बीमा भरोसा पोर्टल और इंश्योरेंस ओम्बड्समैन के पास सीधे और मुफ़्त जा सकते हैं। जो लोग इस प्रक्रिया में अनुभवी मदद चाहते हैं, हम उनकी सहायता करते हैं।',
+    q4: 'मुझे कौन-से दस्तावेज़ चाहिए?', a4: 'आमतौर पर पॉलिसी की कॉपी, रिजेक्शन या सेटलमेंट लेटर, डिस्चार्ज समरी, अस्पताल के बिल और बीमा कंपनी से हुआ पत्राचार। जो है वह भेजें, और कुछ चाहिए होगा तो हम बता देंगे।',
+    q5: 'आप किन बीमा कंपनियों के साथ काम करते हैं?', a5: 'हम पूरे भारत में सरकारी और निजी हेल्थ बीमा कंपनियों और TPA के क्लेम में मदद करते हैं।',
+    q6: 'क्या मेरी जानकारी गोपनीय रहेगी?', a6: 'हाँ। आपके दस्तावेज़ सिर्फ़ आपके केस के लिए इस्तेमाल होते हैं और आपकी सहमति के बिना किसी से साझा नहीं किए जाते।',
+    band_title: 'अपने क्लेम पर हार न मानें।', contact_sub: 'अपने क्लेम के बारे में थोड़ा बताएँ, हम WhatsApp पर आपसे संपर्क करेंगे।',
+    l_name: 'पूरा नाम', l_phone: 'मोबाइल नंबर', l_city: 'शहर', l_ins: 'बीमा कंपनी', l_status: 'क्लेम की स्थिति', o1: 'रिजेक्ट', o2: 'आंशिक भुगतान', o3: 'लंबित या देरी', l_amt: 'क्लेम राशि लगभग (₹)', l_msg: 'क्या हुआ?', l_ok: 'मैं अपने क्लेम के बारे में संपर्क किए जाने के लिए सहमत हूँ।',
+    send: 'WhatsApp पर भेजें', form_note: 'भेजने के बाद आप उसी WhatsApp चैट में अपने दस्तावेज़ भेज सकते हैं।',
+    privacy: 'गोपनीयता नीति', terms: 'नियम व शर्तें',
+    disclaimer: 'Mediclaimswala एक स्वतंत्र क्लेम कंसल्टेंसी है और किसी बीमा कंपनी, TPA या IRDAI से संबद्ध नहीं है। नतीजे पॉलिसी की शर्तों और बीमा कंपनी के फ़ैसले पर निर्भर करते हैं।'
+  };
+  var ERR = {
+    en: { name: 'Enter your name.', phone: 'Enter a 10-digit mobile number.', ok: 'Tick the box to agree to be contacted.' },
+    hi: { name: 'अपना नाम लिखें।', phone: '10 अंकों का मोबाइल नंबर लिखें।', ok: 'संपर्क के लिए सहमति बॉक्स पर टिक करें।' }
+  };
+  var WA_TEXT = { en: 'Hi Mediclaimswala, I need help with my health insurance claim.', hi: 'नमस्ते Mediclaimswala, मुझे अपने हेल्थ इंश्योरेंस क्लेम में मदद चाहिए।' };
+
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var EN = {};
+  nodes.forEach(function (n) { var k = n.getAttribute('data-i18n'); if (!(k in EN)) EN[k] = n.textContent; });
+  var lang = 'en', reason = 'pre', picked = false;
+  var panel = document.getElementById('rpanel');
+
+  function showReason(animate) {
+    var r = REASONS[lang][reason];
+    document.getElementById('rp-say').textContent = r[0];
+    document.getElementById('rp-check').textContent = r[1];
+    if (animate) { panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap'); }
+  }
+  document.querySelectorAll('.reason-list button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      reason = b.dataset.r; picked = true;
+      document.querySelectorAll('.reason-list button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      showReason(true);
+    });
+  });
+
+  function setLang(l) {
+    lang = l;
+    var dict = l === 'hi' ? HI : EN;
+    nodes.forEach(function (n) { var k = n.getAttribute('data-i18n'); if (dict[k] != null) n.textContent = dict[k]; });
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
+    document.querySelectorAll('.wa-link').forEach(function (a) { a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(WA_TEXT[l]); });
+    document.querySelectorAll('.err').forEach(function (e) { e.textContent = ''; });
+    showReason(false);
+    try { localStorage.setItem('mcw-lang', l); } catch (e) {}
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.lang); }); });
+  var saved = null;
+  try { saved = localStorage.getItem('mcw-lang'); } catch (e) {}
+  setLang(saved === 'hi' ? 'hi' : 'en');
+
+  var form = document.getElementById('lead'), F = form.elements;
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var name = F.name.value.trim();
+    var phone = F.phone.value.replace(/\D/g, '').replace(/^(91|0)(?=\d{10}$)/, '');
+    var ok = document.getElementById('f-ok').checked;
+    var e = ERR[lang], phoneOk = /^\d{10}$/.test(phone), bad = null;
+    document.getElementById('e-name').textContent = name ? '' : e.name;
+    document.getElementById('e-phone').textContent = phoneOk ? '' : e.phone;
+    document.getElementById('e-ok').textContent = ok ? '' : e.ok;
+    F.name.setAttribute('aria-invalid', String(!name));
+    F.phone.setAttribute('aria-invalid', String(!phoneOk));
+    if (!name) bad = F.name; else if (!phoneOk) bad = F.phone; else if (!ok) bad = document.getElementById('f-ok');
+    if (bad) { bad.focus(); return; }
+    var lines = [
+      WA_TEXT[lang], '',
+      'Name: ' + name,
+      'Mobile: ' + phone,
+      'City: ' + (F.city.value.trim() || '-'),
+      'Insurer: ' + (F.insurer.value.trim() || '-'),
+      'Claim status: ' + F.status.value,
+      'Rejection reason: ' + (picked ? EN['r' + (['pre','wait','nd','nmn','room','docs'].indexOf(reason) + 1)] : '-'),
+      'Approx. amount: ' + (F.amount.value.trim() ? '₹' + F.amount.value.trim() : '-'),
+      'Details: ' + (F.message.value.trim() || '-')
+    ];
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+  });
+})();
+</script>
+</body>
+</html>

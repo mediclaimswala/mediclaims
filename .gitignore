@@ -1,0 +1,36 @@
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
+
+# Secrets: never commit keys or tokens
+.env
+.env.*
+
+# Local tool output and caches (design inspector, browser tests, deploy CLIs)
+.playwright-mcp/
+.taste-skill/
+.hallmark/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/build/
+.claude/settings.local.json
+.wrangler/
+.vercel/
+node_modules/
+
+# Review screenshots taken during the redesign
+/desktop-full.png
+/mobile-full.png
+
+# Internal brief: it names the people behind Mediclaimswala, who stay anonymous on the site.
+# Remove this line only if the repository is private.
+/MEDICLAIMSWALA_CONTEXT.md

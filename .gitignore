@@ -34,3 +34,6 @@ node_modules/
 # Internal brief: it names the people behind Mediclaimswala, who stay anonymous on the site.
 # Remove this line only if the repository is private.
 /MEDICLAIMSWALA_CONTEXT.md
+
+.vercel
+.env*

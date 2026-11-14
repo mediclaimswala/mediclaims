@@ -4,6 +4,9 @@
 /public/_headers
 /public/_redirects
 
+# Local secrets written by the Vercel CLI
+.env*
+
 # Not part of the website
 /docs
 /graft

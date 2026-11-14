@@ -1,0 +1,17 @@
+# Vercel publishes only public/ (see vercel.json). Keep these out of the upload:
+
+# Cloudflare Pages config; Vercel uses vercel.json instead
+/public/_headers
+/public/_redirects
+
+# Not part of the website
+/docs
+/graft
+/.impeccable
+/.taste-skill
+/.playwright-mcp
+/MEDICLAIMSWALA_CONTEXT.md
+/mediclaimswala-website.html
+/desktop-full.png
+/mobile-full.png
+/README.md

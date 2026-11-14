@@ -38,6 +38,10 @@ Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to G
 
 Every push to `main` publishes the site; other branches get preview links on `*.pages.dev` (kept out of Google by `_headers`).
 
+### Vercel (temporary mirror)
+
+`vercel.json` and `.vercelignore` at the repo root let the same `public/` folder deploy on Vercel too (`vercel --prod`). The two hosts never read each other's files: Cloudflare uses `public/_headers` and `public/_redirects`, Vercel uses `vercel.json` and skips those two. `*.vercel.app` is marked `noindex`. When Cloudflare is the only host, delete `vercel.json` and `.vercelignore`.
+
 ### Custom domain (later)
 
 1. Pages project → **Custom domains** → add `mediclaimswala.in`, then `www.mediclaimswala.in`.

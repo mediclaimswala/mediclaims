@@ -12,7 +12,9 @@
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Keep the *.pages.dev copies out of search results; only mediclaimswala.in should be indexed.
+# Keep the Cloudflare preview addresses out of search results; only mediclaimswala.in should be indexed.
+https://mediclaims.mediclaimswala.workers.dev/*
+  X-Robots-Tag: noindex
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
 https://:version.:project.pages.dev/*

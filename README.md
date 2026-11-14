@@ -25,18 +25,12 @@ python -m http.server 8080
 
 Open http://localhost:8080. (Opening `public/index.html` straight from the folder also works.)
 
-## Deploy on Cloudflare Pages
+## Deploy on Cloudflare
 
-Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → pick this repository, then:
+The site runs as the Cloudflare Worker **`mediclaims`** (static assets, no code), connected to this repository with Workers Builds. `wrangler.jsonc` tells it to serve `public/` and to use `public/404.html` for missing pages. Every push to `main` redeploys it.
 
-| Setting | Value |
-| --- | --- |
-| Production branch | `main` |
-| Framework preset | None |
-| Build command | *(leave empty)* |
-| Build output directory | `public` |
-
-Every push to `main` publishes the site; other branches get preview links on `*.pages.dev` (kept out of Google by `_headers`).
+- Worker address: https://mediclaims.mediclaimswala.workers.dev (marked `noindex`; the real site is mediclaimswala.in)
+- `public/_headers` and `public/_redirects` set the security headers, font caching and the favicon route.
 
 ### Vercel (temporary mirror)
 

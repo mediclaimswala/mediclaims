@@ -1,0 +1,12 @@
+// Cloudflare Worker that serves the static site in public/.
+// The name must match the Worker in the Cloudflare dashboard ("mediclaims").
+// Custom domains (mediclaimswala.in, www) are added in the dashboard, not here.
+{
+  "name": "mediclaims",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

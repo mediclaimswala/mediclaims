@@ -1,3 +1,1 @@
 # Cloudflare Pages redirects: https://developers.cloudflare.com/pages/configuration/redirects/
-# Browsers ask for /favicon.ico on their own; serve the PNG favicon there.
-/favicon.ico /assets/favicon-32.png 200

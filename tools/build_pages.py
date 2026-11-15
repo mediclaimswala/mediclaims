@@ -163,8 +163,8 @@ def render(mod, page, langs):
 <meta property="og:description" content="{esc(page["description"])}">
 <meta property="og:image" content="{SITE}/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon-96.png" type="image/png" sizes="96x96">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="{preload}" as="font" type="font/woff2" crossorigin>

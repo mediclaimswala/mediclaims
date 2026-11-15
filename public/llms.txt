@@ -39,6 +39,14 @@ Key facts:
 ## Pages
 
 - [Home](https://mediclaimswala.in/): services, how it works, fees with a fee calculator, the complaint escalation path, frequently asked questions and the case review form.
+- [Claim rejection](https://mediclaimswala.in/claim-rejection): why health claims get rejected and how to challenge a rejection, step by step.
+- [Delay in claim process](https://mediclaimswala.in/delay-in-claim-process): IRDAI time limits for settling claims, interest on late payment, and how to escalate.
+- [Claim short-settled](https://mediclaimswala.in/claim-short-settled): room-rent proportionate deductions, non-payable items, co-payment and sub-limits, and how to dispute them.
+- [Health claim reimbursement](https://mediclaimswala.in/health-claim-reimbursement): documents, deadlines and steps for a reimbursement claim.
+- [Mis-selling of health insurance](https://mediclaimswala.in/mis-selling-of-health-insurance): signs of a mis-sold policy, the 30-day free-look period and how to complain.
+- [Know your policy](https://mediclaimswala.in/know-your-policy): the policy terms that cause most claim disputes and what to check.
+- [Insurance Ombudsman guide](https://mediclaimswala.in/insurance-ombudsman-complaint): who can file, time limits, documents and what happens after filing.
+- Every page above also has a Hindi version under https://mediclaimswala.in/hi/ (for example https://mediclaimswala.in/hi/claim-rejection).
 - [Privacy policy](https://mediclaimswala.in/privacy): how case documents and personal data are handled.
 - [Terms](https://mediclaimswala.in/terms): terms of service, including the fee terms.
 

@@ -26,6 +26,7 @@ desktop.ini
 .wrangler/
 .vercel/
 node_modules/
+__pycache__/
 
 # Review screenshots taken during the redesign
 /desktop-full.png

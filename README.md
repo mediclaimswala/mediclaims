@@ -9,10 +9,18 @@ Landing page for [mediclaimswala.in](https://mediclaimswala.in): help with rejec
 | `public/` | **The website.** Everything Cloudflare publishes. |
 | `public/index.html` | Home page (inline CSS for a fast first paint). |
 | `public/privacy.html`, `public/terms.html`, `public/404.html` | Legal pages and the not-found page. |
+| `public/<service>.html`, `public/hi/<service>.html` | Service and guide pages in English and Hindi. **Generated, don't edit by hand** (see below). |
+| `content/en.py`, `content/hi.py` | The text of the service and guide pages. Edit these. |
+| `tools/build_pages.py` | Builds the service and guide pages and `sitemap.xml` from `content/`. |
 | `public/assets/main.js` | Language switch, rejection-reason letter, scroll effects, the case-review form. |
-| `public/assets/fonts/` | Self-hosted Poppins, Inter and Noto Sans Devanagari. |
-| `public/_headers`, `public/_redirects` | Cloudflare Pages security headers, caching and the favicon route. |
-| `public/robots.txt`, `public/sitemap.xml` | For search engines. |
+| `public/assets/motion.js`, `public/assets/nav.js` | Motion (motion.dev) springs for section reveals; closes the Services menu. |
+| `public/assets/fonts/` | Self-hosted Zodiak (Fontshare), Poppins, Inter and Noto Sans Devanagari. |
+| `public/_headers`, `public/_redirects` | Cloudflare security headers, caching and the favicon route. |
+| `public/robots.txt`, `public/sitemap.xml`, `public/llms.txt` | For search engines and AI assistants. |
+
+## Editing the service and guide pages
+
+Change the text in `content/en.py` (and the same page in `content/hi.py`), then run `python tools/build_pages.py` from the repo root and commit both the content and the generated `public/` files. The script checks that every internal link points at a real page. When the facts are re-checked, update `REVIEWED` in both content files.
 | `docs/` | Design notes. Not published. |
 | `mediclaimswala-website.html` | The earlier version, kept for reference. Not published. |
 

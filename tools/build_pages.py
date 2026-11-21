@@ -171,8 +171,11 @@ def render(mod, page, langs):
 <link rel="stylesheet" href="/assets/fonts.css">
 <link rel="stylesheet" href="/assets/page.css">
 <script type="application/ld+json">{ld}</script>
+<meta name="facebook-domain-verification" content="emebk17k6oy4ffzmbfv1mu7yinuczq">
+<script src="/assets/pixel.js" async></script>
 </head>
 <body class="g">
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1520687953209029&amp;ev=PageView&amp;noscript=1"></noscript>
 <a class="skip" href="#main">{esc(ui["skip"])}</a>
 {header}
 <main id="main">

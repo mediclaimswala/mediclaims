@@ -286,6 +286,7 @@
     var waUrl = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n'));
     // Open WhatsApp first, inside the click, so popup blockers allow it.
     window.open(waUrl, '_blank', 'noopener');
+    if (window.fbq) fbq('track', 'Lead'); // only valid submissions count; no form details are sent to Meta
     if (LEAD_KEY) {
       try {
         fetch('https://api.web3forms.com/submit', {
